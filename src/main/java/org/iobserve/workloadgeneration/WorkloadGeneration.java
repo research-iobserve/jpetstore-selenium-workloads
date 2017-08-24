@@ -4,9 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.iobserve.workloadgeneration.usertype.AbstractUserType;
-import org.iobserve.workloadgeneration.usertype.cocome.ScanXLoopY;
+import org.iobserve.workloadgeneration.usertype.jpetstore.UTAccountManager;
+import org.iobserve.workloadgeneration.usertype.jpetstore.UTBuyCats;
+import org.iobserve.workloadgeneration.usertype.jpetstore.UTBuyFish;
+import org.iobserve.workloadgeneration.usertype.jpetstore.UTBuySeperate;
+import org.iobserve.workloadgeneration.usertype.jpetstore.UTFastBuy;
+import org.iobserve.workloadgeneration.usertype.jpetstore.UTJustNavigate;
+import org.iobserve.workloadgeneration.usertype.jpetstore.UTNewCustomer;
 
-import org.iobserve.workloadgeneration.WorkloadGeneration;
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.Parameter;
+import com.beust.jcommander.ParameterException;
+import com.beust.jcommander.converters.IntegerConverter;
 
 /**
  * Generate Workload for Website
@@ -14,36 +23,58 @@ import org.iobserve.workloadgeneration.WorkloadGeneration;
  * @author Christoph Dornieden
  */
 public class WorkloadGeneration {
-	public static final String DEFAULT_SITE = "https://192.168.48.210:32800";
-	public static final int DEFAULT_RUNS = 20;
+
+	// private static final String PHANTOM_JS_PATH =
+	// "/usr/lib/node_modules/phantomjs/bin/phantomjs";
+	// private static final String PHANTOM_JS_PATH =
+	// "/home/reiner/node_modules/phantomjs/lib/phantom/bin/phantomjs";
+
+	@Parameter(names = { "-b", "--base-url" }, description = "URL to the JPetStore", required = true)
+	private String baseUrl;
+
+	@Parameter(names = { "-i",
+			"--iterations" }, description = "Iterations of the behavior mix", required = true, converter = IntegerConverter.class)
+	private Integer iterations;
+
+	@Parameter(names = { "-s", "--screenshot-path" }, description = "Path for screenshots", required = true)
+	private String screenshotPath;
+
+	@Parameter(names = { "-p", "--phantom-js" }, description = "Path to PhantomJS executable", required = true)
+	private String phantomJSPath;
 
 	public static void main(final String[] args) {
-		final String baseUrl = WorkloadGeneration.DEFAULT_SITE;
-		final int runs = WorkloadGeneration.DEFAULT_RUNS;
+		final WorkloadGeneration workloadGeneration = new WorkloadGeneration();
+		final JCommander commander = new JCommander(workloadGeneration);
+		try {
+			commander.parse(args);
+			workloadGeneration.execute(commander);
+		} catch (final ParameterException e) {
+			System.err.println(e.getLocalizedMessage());
+			commander.usage();
+		}
+	}
 
+	private void execute(final JCommander commander) {
 		// add users
 		final List<AbstractUserType> users = new ArrayList<>();
 		//
-		// users.add(new UTBuyFish(baseUrl));
-		// users.add(new UTBuyCats(baseUrl));
-		// users.add(new UTBuySeperate(baseUrl));
-		// users.add(new UTAccountManager(baseUrl));
-		// users.add(new UTFastBuy(baseUrl));
-		// // // users.add(new UTGotLink(baseUrl));
-		// users.add(new UTNewCustomer(baseUrl));
-		// users.add(new UTJustNavigate(baseUrl));
-		// users.add(new UTNeverCheckout(baseUrl));
-		users.add(new ScanXLoopY(baseUrl, 1, 8));
-		users.add(new ScanXLoopY(baseUrl, 8, 1));
-		users.add(new ScanXLoopY(baseUrl, 4, 4));
-		// users.add(new ScanXLoopY(baseUrl, 8, 8));
+		users.add(new UTBuyFish(this.baseUrl, this.phantomJSPath, this.screenshotPath));
+		users.add(new UTBuyCats(this.baseUrl, this.phantomJSPath, this.screenshotPath));
+		users.add(new UTBuySeperate(this.baseUrl, this.phantomJSPath, this.screenshotPath));
+		users.add(new UTAccountManager(this.baseUrl, this.phantomJSPath, this.screenshotPath));
+		users.add(new UTFastBuy(this.baseUrl, this.phantomJSPath, this.screenshotPath));
+		// // // users.add(new UTGotLink(baseUrl, phantomJSPath,
+		// screenshotPath));
+		users.add(new UTNewCustomer(this.baseUrl, this.phantomJSPath, this.screenshotPath));
+		users.add(new UTJustNavigate(this.baseUrl, this.phantomJSPath, this.screenshotPath));
+		// users.add(new UTNeverCheckout(this.baseUrl, phantomJSPath,
+		// this.screenshotPath));
 
 		// generateWorkload
 		users.stream().forEach(user -> {
 			System.out.println(user.getClass().toString());
-			user.generateUserBehavior(runs);
+			user.generateUserBehavior(this.iterations);
 		});
 		System.out.println("Finished");
-
 	}
 }

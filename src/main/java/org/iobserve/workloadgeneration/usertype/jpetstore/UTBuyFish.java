@@ -5,9 +5,6 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 
-import org.iobserve.workloadgeneration.usertype.jpetstore.JPetstoreCategory;
-import org.iobserve.workloadgeneration.usertype.jpetstore.JPetstoreUser;
-
 /**
  *
  * Representing a user buying lots of fish
@@ -21,8 +18,8 @@ public class UTBuyFish extends JPetstoreUser {
 
 	private final List<String> items;
 
-	public UTBuyFish(final String baseUrl) {
-		super(baseUrl);
+	public UTBuyFish(final String baseUrl, final String phantomJSPath, final String screenshotPath) {
+		super(baseUrl, phantomJSPath, screenshotPath);
 
 		this.items = new ArrayList<>();
 		this.items.add("FI-SW-01");

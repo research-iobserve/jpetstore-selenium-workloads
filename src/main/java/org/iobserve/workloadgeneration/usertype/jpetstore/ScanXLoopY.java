@@ -1,4 +1,4 @@
-package org.iobserve.workloadgeneration.usertype.cocome;
+package org.iobserve.workloadgeneration.usertype.jpetstore;
 
 import org.iobserve.workloadgeneration.usertype.AbstractUserType;
 import org.openqa.selenium.By;
@@ -8,8 +8,9 @@ public class ScanXLoopY extends AbstractUserType {
 	final int scans;
 	final int loops;
 
-	public ScanXLoopY(final String baseUrl, final int x, final int y) {
-		super(baseUrl);
+	public ScanXLoopY(final String baseUrl, final String phantomJSPath, final String screenshotPath, final int x,
+			final int y) {
+		super(baseUrl, phantomJSPath, screenshotPath);
 		this.scans = x;
 		this.loops = y;
 		// TODO Auto-generated constructor stub
@@ -55,7 +56,8 @@ public class ScanXLoopY extends AbstractUserType {
 			this.driver.findElement(By.name("j_idt42:j_idt53")).sendKeys("20");
 			this.driver.findElement(By.id("j_idt42:pay-sum")).click();
 			// this.takeScreenshot("pay");
-			if (i < (this.loops - 1)) { // do not click on start in the last iteration
+			if (i < this.loops - 1) { // do not click on start in the last
+										// iteration
 				this.driver.findElement(By.name("j_idt42:j_idt98")).click();
 			}
 

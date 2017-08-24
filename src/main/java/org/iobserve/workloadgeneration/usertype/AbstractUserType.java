@@ -12,18 +12,18 @@ import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import org.iobserve.workloadgeneration.usertype.AbstractUserType;
-
 public abstract class AbstractUserType {
-	private static final String PATH_PHANTOMJS = "/usr/lib/node_modules/phantomjs/bin/phantomjs";
-	private static final String PATH_SCREENSHOTS = "/home/christoph/Remote/christoph-dornieden-msc/Code/workloadgeneration/";
 
 	protected final String baseUrl;
 	protected PhantomJSDriver driver;
 	protected final Random random;
+	private final String screenshotPath;
+	private final String phantomJsPath;
 
-	public AbstractUserType(final String baseUrl) {
+	public AbstractUserType(final String baseUrl, final String phantomJSPath, final String streenshotPath) {
 		this.baseUrl = baseUrl;
+		this.phantomJsPath = phantomJSPath;
+		this.screenshotPath = streenshotPath;
 
 		this.random = new Random();
 		this.createNewDriver();
@@ -54,8 +54,7 @@ public abstract class AbstractUserType {
 		final DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setJavascriptEnabled(true);
 		capabilities.setCapability("takesScreenshot", true);
-		capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
-				AbstractUserType.PATH_PHANTOMJS);
+		capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, this.phantomJsPath);
 		capabilities.setCapability("acceptSslCerts", true);
 		capabilities.setCapability("webSecurityEnabled", false);
 		final String[] phantomJsArgs = { "--web-security=no", "--ignore-ssl-errors=yes" };
@@ -70,7 +69,7 @@ public abstract class AbstractUserType {
 	protected void takeScreenshot(final String filename) {
 		try {
 			final File screenshot = this.driver.getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(screenshot, new File(AbstractUserType.PATH_SCREENSHOTS + filename + ".png"));
+			FileUtils.copyFile(screenshot, new File(this.screenshotPath + filename + ".png"));
 		} catch (final IOException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();

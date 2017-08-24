@@ -3,20 +3,19 @@ package org.iobserve.workloadgeneration.usertype.jpetstore;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.iobserve.workloadgeneration.usertype.jpetstore.JPetstoreUser;
-
 /**
  *
  * Representing a user following an item link and leaving the page
- * 
+ *
  * @author Christoph Dornieden
  *
  */
 public class UTGotLink extends JPetstoreUser {
 	private final List<String> items;
 
-	public UTGotLink(String baseUrl) {
-		super(baseUrl);
+	public UTGotLink(final String baseUrl, final String phantomJSPath, final String screenshotPath) {
+		super(baseUrl, phantomJSPath, screenshotPath);
+
 		this.items = new ArrayList<>();
 
 		this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-6");

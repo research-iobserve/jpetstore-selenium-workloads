@@ -3,13 +3,10 @@ package org.iobserve.workloadgeneration.usertype.jpetstore;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-import org.iobserve.workloadgeneration.usertype.jpetstore.JPetstoreUser;
-
 public class UTAccountManager extends JPetstoreUser {
 
-	public UTAccountManager(String baseUrl) {
-		super(baseUrl);
-		// TODO Auto-generated constructor stub
+	public UTAccountManager(final String baseUrl, final String phantomJSPath, final String screenshotPath) {
+		super(baseUrl, phantomJSPath, screenshotPath);
 	}
 
 	@Override

@@ -2,20 +2,17 @@ package org.iobserve.workloadgeneration.usertype.jpetstore;
 
 import org.openqa.selenium.By;
 
-import org.iobserve.workloadgeneration.usertype.jpetstore.JPetstoreUser;
-
 /**
  *
  * Representing a one stop shopper
- * 
+ *
  * @author Christoph Dornieden
  *
  */
 public class UTFastBuy extends JPetstoreUser {
 
-	public UTFastBuy(String baseUrl) {
-		super(baseUrl);
-		// TODO Auto-generated constructor stub
+	public UTFastBuy(final String baseUrl, final String phantomJSPath, final String screenshotPath) {
+		super(baseUrl, phantomJSPath, screenshotPath);
 	}
 
 	@Override

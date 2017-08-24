@@ -4,9 +4,8 @@ import org.iobserve.workloadgeneration.usertype.AbstractUserType;
 
 public class UTNeverCheckout extends AbstractUserType {
 
-	public UTNeverCheckout(String baseUrl) {
-		super(baseUrl);
-		// TODO Auto-generated constructor stub
+	public UTNeverCheckout(final String baseUrl, final String phantomJSPath, final String screenshotPath) {
+		super(baseUrl, phantomJSPath, screenshotPath);
 	}
 
 	@Override

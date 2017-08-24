@@ -11,9 +11,8 @@ import org.openqa.selenium.By;
  */
 public class UTJustNavigate extends AbstractUserType {
 
-	public UTJustNavigate(String baseUrl) {
-		super(baseUrl);
-		// TODO Auto-generated constructor stub
+	public UTJustNavigate(final String baseUrl, final String phantomJSPath, final String screenshotPath) {
+		super(baseUrl, phantomJSPath, screenshotPath);
 	}
 
 	@Override

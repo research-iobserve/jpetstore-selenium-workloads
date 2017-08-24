@@ -2,17 +2,14 @@ package org.iobserve.workloadgeneration.usertype.jpetstore;
 
 import org.openqa.selenium.By;
 
-import org.iobserve.workloadgeneration.usertype.jpetstore.JPetstoreUser;
-
 /**
  * @author Christoph Dornieden
  *
  */
 public class UTBuySeperate extends JPetstoreUser {
 
-	public UTBuySeperate(String baseUrl) {
-		super(baseUrl);
-		// TODO Auto-generated constructor stub
+	public UTBuySeperate(final String baseUrl, final String phantomJSPath, final String screenshotPath) {
+		super(baseUrl, phantomJSPath, screenshotPath);
 	}
 
 	@Override

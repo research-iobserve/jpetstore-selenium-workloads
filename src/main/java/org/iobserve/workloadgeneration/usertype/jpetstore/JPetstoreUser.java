@@ -9,8 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import org.iobserve.workloadgeneration.usertype.jpetstore.JPetstoreCategory;
-
 /**
  *
  * @author Christoph Dornieden
@@ -18,9 +16,8 @@ import org.iobserve.workloadgeneration.usertype.jpetstore.JPetstoreCategory;
  */
 public abstract class JPetstoreUser extends AbstractUserType {
 
-	public JPetstoreUser(String baseUrl) {
-		super(baseUrl);
-
+	public JPetstoreUser(final String baseUrl, final String phantomJSPath, final String screenshotPath) {
+		super(baseUrl, phantomJSPath, screenshotPath);
 	}
 
 	protected void randomAnimal() {
@@ -29,7 +26,7 @@ public abstract class JPetstoreUser extends AbstractUserType {
 		this.randomElementFromTable();
 	}
 
-	protected void randomAnimalFromCategory(JPetstoreCategory category) {
+	protected void randomAnimalFromCategory(final JPetstoreCategory category) {
 		this.category(category);
 		this.randomElementFromTable();
 		this.randomElementFromTable();
@@ -47,7 +44,7 @@ public abstract class JPetstoreUser extends AbstractUserType {
 		this.category(categories.get(this.random.nextInt(categories.size())));
 	}
 
-	protected void category(JPetstoreCategory category) {
+	protected void category(final JPetstoreCategory category) {
 		switch (category) {
 		case BIRD:
 			this.driver.findElement(By.xpath("//div[@id='QuickLinks']/a[5]/img")).click();
@@ -91,7 +88,7 @@ public abstract class JPetstoreUser extends AbstractUserType {
 		this.driver.findElement(By.name("signon")).click();
 	}
 
-	protected void checkout(WebDriver driver) {
+	protected void checkout(final WebDriver driver) {
 		driver.findElement(By.name("img_cart")).click();
 		driver.findElement(By.linkText("Proceed to Checkout")).click();
 		driver.findElement(By.name("newOrder")).click();

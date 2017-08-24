@@ -4,13 +4,10 @@ import java.util.Random;
 
 import org.openqa.selenium.By;
 
-import org.iobserve.workloadgeneration.usertype.jpetstore.JPetstoreUser;
-
 public class UTNewCustomer extends JPetstoreUser {
 
-	public UTNewCustomer(final String baseUrl) {
-		super(baseUrl);
-		// TODO Auto-generated constructor stub
+	public UTNewCustomer(final String baseUrl, final String phantomJSPath, final String screenshotPath) {
+		super(baseUrl, phantomJSPath, screenshotPath);
 	}
 
 	@Override
