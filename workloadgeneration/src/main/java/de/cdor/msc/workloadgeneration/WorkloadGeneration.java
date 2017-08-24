@@ -4,8 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.cdor.msc.workloadgeneration.usertype.AbstractUserType;
+import de.cdor.msc.workloadgeneration.usertype.jpetstore.UTAccountManager;
 import de.cdor.msc.workloadgeneration.usertype.jpetstore.UTBuyCats;
 import de.cdor.msc.workloadgeneration.usertype.jpetstore.UTBuyFish;
+import de.cdor.msc.workloadgeneration.usertype.jpetstore.UTBuySeperate;
+import de.cdor.msc.workloadgeneration.usertype.jpetstore.UTFastBuy;
+import de.cdor.msc.workloadgeneration.usertype.jpetstore.UTGotLink;
+import de.cdor.msc.workloadgeneration.usertype.jpetstore.UTJustNavigate;
+import de.cdor.msc.workloadgeneration.usertype.jpetstore.UTNewCustomer;
 
 /**
  * Generate Workload for Website
@@ -25,12 +31,12 @@ public class WorkloadGeneration {
         //
         users.add(new UTBuyFish(baseUrl));
         users.add(new UTBuyCats(baseUrl));
-        // users.add(new UTBuySeperate(baseUrl));
-        // users.add(new UTAccountManager(baseUrl));
-        // users.add(new UTFastBuy(baseUrl));
-        // users.add(new UTGotLink(baseUrl));
-        // users.add(new UTNewCustomer(baseUrl));
-        // users.add(new UTJustNavigate(baseUrl));
+        users.add(new UTBuySeperate(baseUrl));
+        users.add(new UTAccountManager(baseUrl));
+        users.add(new UTFastBuy(baseUrl));
+        users.add(new UTGotLink(baseUrl));
+        users.add(new UTNewCustomer(baseUrl));
+        users.add(new UTJustNavigate(baseUrl));
 
         // users.add(new UTNeverCheckout(baseUrl));
 
