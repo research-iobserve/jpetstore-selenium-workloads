@@ -37,10 +37,11 @@ import com.beust.jcommander.converters.IntegerConverter;
  * Generate Workload for Website
  *
  * @author Christoph Dornieden
+ * @author Reiner Jung
  */
 public class WorkloadGeneration {
 
-    @Parameter(names = { "-u", "--servlet-" }, description = "URL to the JPetStore", required = true)
+    @Parameter(names = { "-u", "--servlet-url" }, description = "URL to the JPetStore", required = true)
     private String baseUrl;
 
     @Parameter(names = { "-i",
