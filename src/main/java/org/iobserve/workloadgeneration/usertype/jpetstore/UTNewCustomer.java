@@ -26,7 +26,7 @@ public class UTNewCustomer extends JPetstoreUser {
             sb.append(c);
         }
         final String id = sb.toString();
-        this.driver.get(this.baseUrl + "/jpetstore/actions/Catalog.action");
+        this.driver.get(this.baseUrl + "/actions/Catalog.action");
         this.driver.findElement(By.linkText("Sign In")).click();
         this.driver.findElement(By.linkText("Register Now!")).click();
         this.driver.findElement(By.name("username")).clear();

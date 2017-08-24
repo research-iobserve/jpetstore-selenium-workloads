@@ -17,7 +17,7 @@ public class UTFastBuy extends JPetstoreUser {
 
     @Override
     protected void generateUserBehavior() {
-        this.driver.get(this.baseUrl + "/jpetstore/actions/Catalog.action");
+        this.driver.get(this.baseUrl + "/actions/Catalog.action");
         this.driver.findElement(By.xpath("//div[@id='SidebarContent']/a[4]/img")).click();
         this.driver.findElement(By.linkText("RP-SN-01")).click();
         this.driver.findElement(By.linkText("Add to Cart")).click();
@@ -35,7 +35,7 @@ public class UTFastBuy extends JPetstoreUser {
 
     @Override
     protected void generateRandomizedUserBehavior() {
-        this.driver.get(this.baseUrl + "/jpetstore/actions/Catalog.action");
+        this.driver.get(this.baseUrl + "/actions/Catalog.action");
 
         this.randomAnimal();
         this.driver.findElement(By.linkText("Proceed to Checkout")).click();

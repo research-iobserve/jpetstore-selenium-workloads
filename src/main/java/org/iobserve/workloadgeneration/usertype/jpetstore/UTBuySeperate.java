@@ -14,7 +14,7 @@ public class UTBuySeperate extends JPetstoreUser {
 
     @Override
     protected void generateUserBehavior() {
-        this.driver.get(this.baseUrl + "/jpetstore/actions/Catalog.action");
+        this.driver.get(this.baseUrl + "/actions/Catalog.action");
         this.driver.findElement(By.cssSelector("img")).click();
         this.login("j2ee", "j2ee");
         this.driver.findElement(By.cssSelector("#QuickLinks > a > img")).click();
@@ -27,7 +27,7 @@ public class UTBuySeperate extends JPetstoreUser {
 
     @Override
     protected void generateRandomizedUserBehavior() {
-        this.driver.get(this.baseUrl + "/jpetstore/actions/Catalog.action");
+        this.driver.get(this.baseUrl + "/actions/Catalog.action");
         this.driver.findElement(By.cssSelector("img")).click();
         this.login("j2ee", "j2ee");
         this.randomAnimal();

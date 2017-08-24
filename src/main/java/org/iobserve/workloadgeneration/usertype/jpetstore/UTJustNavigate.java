@@ -17,7 +17,7 @@ public class UTJustNavigate extends AbstractUserType {
 
     @Override
     protected void generateUserBehavior() {
-        this.driver.get(this.baseUrl + "/jpetstore/actions/Catalog.action");
+        this.driver.get(this.baseUrl + "/actions/Catalog.action");
         this.driver.findElement(By.cssSelector("img")).click();
         // browse fishes
 

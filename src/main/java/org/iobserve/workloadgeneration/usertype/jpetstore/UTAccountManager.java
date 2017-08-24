@@ -17,7 +17,7 @@ public class UTAccountManager extends JPetstoreUser {
 
     @Override
     protected void generateUserBehavior() {
-        this.driver.get(this.baseUrl + "/jpetstore/actions/Catalog.action");
+        this.driver.get(this.baseUrl + "/actions/Catalog.action");
         this.driver.findElement(By.cssSelector("img")).click();
         this.login("ACID", "ACID");
         this.driver.findElement(By.linkText("My Account")).click();

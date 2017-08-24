@@ -40,7 +40,7 @@ import com.beust.jcommander.converters.IntegerConverter;
  */
 public class WorkloadGeneration {
 
-    @Parameter(names = { "-b", "--base-url" }, description = "URL to the JPetStore", required = true)
+    @Parameter(names = { "-u", "--servlet-" }, description = "URL to the JPetStore", required = true)
     private String baseUrl;
 
     @Parameter(names = { "-i",
@@ -77,8 +77,8 @@ public class WorkloadGeneration {
         users.add(new UTGotLink(this.baseUrl, this.phantomJSPath, this.screenshotPath));
         users.add(new UTNewCustomer(this.baseUrl, this.phantomJSPath, this.screenshotPath));
         users.add(new UTJustNavigate(this.baseUrl, this.phantomJSPath, this.screenshotPath));
-        // users.add(new UTNeverCheckout(this.baseUrl, phantomJSPath,
-        // this.screenshotPath));
+        // users.add(new UTNeverCheckout(baseUrl, phantomJSPath,
+        // screenshotPath));
 
         // generateWorkload
         users.stream().forEach(user -> {

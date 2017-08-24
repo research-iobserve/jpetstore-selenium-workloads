@@ -32,7 +32,7 @@ public class UTBuyFish extends JPetstoreUser {
     @Override
     protected void generateUserBehavior() {
         final int itemsToBuy = 8;
-        this.driver.get(this.baseUrl + "/jpetstore/actions/Catalog.action");
+        this.driver.get(this.baseUrl + "/actions/Catalog.action");
 
         // buy fish
         for (int j = 0; j < itemsToBuy; j++) {
@@ -70,7 +70,7 @@ public class UTBuyFish extends JPetstoreUser {
     @Override
     protected void generateRandomizedUserBehavior() {
         final int itemsToBuy = 3 + this.random.nextInt(5);
-        this.driver.get(this.baseUrl + "/jpetstore/actions/Catalog.action");
+        this.driver.get(this.baseUrl + "/actions/Catalog.action");
 
         // buy fish
         for (int j = 0; j < itemsToBuy; j++) {
