@@ -6,6 +6,6 @@ package org.iobserve.workloadgeneration.usertype.jpetstore;
  *
  */
 public enum JPetstoreCategory {
-	FISH, CAT, DOG, REPTILE, BIRD
+    FISH, CAT, DOG, REPTILE, BIRD
 
 }

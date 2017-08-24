@@ -11,38 +11,37 @@ import java.util.List;
  *
  */
 public class UTGotLink extends JPetstoreUser {
-	private final List<String> items;
+    private final List<String> items;
 
-	public UTGotLink(final String baseUrl, final String phantomJSPath, final String screenshotPath) {
-		super(baseUrl, phantomJSPath, screenshotPath);
+    public UTGotLink(final String baseUrl, final String phantomJSPath, final String screenshotPath) {
+        super(baseUrl, phantomJSPath, screenshotPath);
+        this.items = new ArrayList<>();
 
-		this.items = new ArrayList<>();
+        this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-6");
+        this.items.add("jpetstore/actions/Catalog.action?viewItem=&itemId=EST-3");
+        this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-9");
+        this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-8");
+        this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-13");
+        this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-14");
+        this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-15");
+        this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-17");
+        this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-16");
+        this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-3");
+        this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-5");
+        this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-18");
+        this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-19");
+        this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-1");
+    }
 
-		this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-6");
-		this.items.add("jpetstore/actions/Catalog.action?viewItem=&itemId=EST-3");
-		this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-9");
-		this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-8");
-		this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-13");
-		this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-14");
-		this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-15");
-		this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-17");
-		this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-16");
-		this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-3");
-		this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-5");
-		this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-18");
-		this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-19");
-		this.items.add("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-1");
-	}
+    @Override
+    protected void generateRandomizedUserBehavior() {
+        this.driver.get(this.items.get(this.random.nextInt(this.items.size() - 1)));
 
-	@Override
-	protected void generateRandomizedUserBehavior() {
-		this.driver.get(this.items.get(this.random.nextInt(this.items.size() - 1)));
+    }
 
-	}
-
-	@Override
-	protected void generateUserBehavior() {
-		this.driver.get("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-6");
-	}
+    @Override
+    protected void generateUserBehavior() {
+        this.driver.get("/jpetstore/actions/Catalog.action?viewItem=&itemId=EST-6");
+    }
 
 }
